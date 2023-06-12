@@ -5,7 +5,7 @@ import { UtilitiesService } from 'src/services/utilities/utilities.service';
 import * as fs from 'fs';
 
 
-@Controller('transcript')
+@Controller('/api/transcript')
 export class TranscriptController {
 
     constructor(
@@ -46,7 +46,7 @@ export class TranscriptController {
             const pdf = await this.utilities.generatePDF(transcript);
 
             res.set({
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/pdf',
                 'Content-Disposition': `attachment; filename=${id}.pdf`,
               });
             return new StreamableFile(pdf);

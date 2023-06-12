@@ -6,6 +6,16 @@ import { Prisma } from '@prisma/client';
 export class StudentService {
     constructor(private prismaService: PrismaService) { }
 
+    async getAllBatches() {
+        let batches = await this.prismaService.student.findMany({
+            select: {
+                Batch: true
+            },
+            distinct: ['Batch']
+        })
+        return batches.map((student) => student.Batch);
+    }
+
     async getAllStudents() {
         return await this.prismaService.student.findMany();
     }
@@ -22,6 +32,9 @@ export class StudentService {
         return await this.prismaService.student.findMany({
             where: {
                 Batch: batch
+            },
+            orderBy: {
+                RegNo: "asc"
             }
         });
     }

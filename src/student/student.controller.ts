@@ -1,10 +1,20 @@
 import { StudentService } from './../services/student/student.service';
 import { Controller, Get, NotFoundException, Param } from '@nestjs/common';
 
-@Controller('student')
+@Controller('/api/student')
 export class StudentController {
 
     constructor(private readonly student: StudentService) { }
+
+    @Get('batches')
+    async getAllBatches() {
+        try {
+            const batches = await this.student.getAllBatches();
+            return batches;
+        } catch (error: any) {
+            return new NotFoundException('No Batches Found');
+        }
+    }
 
     @Get('all')
     async getAllStudents() {
