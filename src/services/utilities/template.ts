@@ -129,7 +129,7 @@ export function createTranscriptTemplate(data, logo, signature) {
                 }
 
                 tbody > tr > td {
-                    font-size: 0.7em;
+                    font-size: 0.70em;
                 }
 
                 thead > tr > th {
@@ -208,6 +208,9 @@ export function createTranscriptTemplate(data, logo, signature) {
                 .tb-ovr col:nth-child(1) {
                     width: 30%;
                 }
+                
+                
+
             </style>
 
             <title>Transcript</title>
@@ -235,7 +238,7 @@ export function createTranscriptTemplate(data, logo, signature) {
                 </div>
               </div>
               <div>
-              <table class="tb-head table table-borderless lh-1 mb-0">
+              <table class="tb-head table table-borderless lh-1 mb-1">
               <col><col>
                                 <thead>
                                     <tr>
@@ -255,30 +258,30 @@ export function createTranscriptTemplate(data, logo, signature) {
                                 </thead>
                                 </table>
                 ${Object.keys(details)
-            .map((row_r) => {
-                const ordered = Object.keys(details[row_r])
-                    .sort()
-                    .reduce((obj, key) => {
-                        obj[key] = details[row_r][key];
-                        return obj;
-                    }, {});
-                let count = {};
-                return `
+      .map((row_r) => {
+        const ordered = Object.keys(details[row_r])
+          .sort()
+          .reduce((obj, key) => {
+            obj[key] = details[row_r][key];
+            return obj;
+          }, {});
+        let count = {};
+        return `
                     <div>
                     
                         ${Object.keys(ordered)
-                        .map(
-                            (year) => `
+          .map(
+            (year) => `
                             <div>
-                            <div class="w-100">
+                            <div class="w-100 mt-0 mb-0">
                                 <table class="tb-main table table-bordered lh-1">
                                 <col><col><col><col><col><col><col><col><col><col><col><col><col><col><col>
                                 <thead>
                                     <tr>
                                     ${(() => {
-                                    for (var key in count) delete count[key];
-                                    return "";
-                                })()}
+              for (var key in count) delete count[key];
+              return "";
+            })()}
                                     <th >Sem.</th>
                                     <th >Code</th>
                                     <th >Course</th>
@@ -304,119 +307,119 @@ export function createTranscriptTemplate(data, logo, signature) {
                                         rowspan="0"
                                     ><p>
                                         ${(() => {
-                                    if (Number(year) == 3)
-                                        return `Fall ${row_r}`;
-                                    else if (Number(year) == 2)
-                                        return `Summer ${row_r}`;
-                                    else return `Spring ${row_r}`;
-                                })()}</p>
+              if (Number(year) == 3)
+                return `F ${row_r}`;
+              else if (Number(year) == 2)
+                return `SU ${row_r}`;
+              else return `SP ${row_r}`;
+            })()}</p>
                                     </td>
                                     ${details[row_r][year]
-                                    .map(
-                                        (row) => `
+              .map(
+                (row) => `
                                     
                                     <td scope="row">${row.CourseCode}</td>
                                     <td scope="row">${row.courseTitle}</td>
                                     <td scope="row">
                                         ${count_semester(
-                                            yesNo(row.PLO1),
-                                            count,
-                                            "PLO1"
-                                        )}
+                  yesNo(row.PLO1),
+                  count,
+                  "PLO1"
+                )}
                                                 ${yesNo(row.PLO1)}
                                     </td>
                                     <td scope="row">
                                         ${count_semester(
-                                            yesNo(row.PLO2),
-                                            count,
-                                            "PLO2"
-                                        )}
+                  yesNo(row.PLO2),
+                  count,
+                  "PLO2"
+                )}
                                                 ${yesNo(row.PLO2)}
                                     </td>
                                     <td scope="row">
                                         ${count_semester(
-                                            yesNo(row.PLO3),
-                                            count,
-                                            "PLO3"
-                                        )}
+                  yesNo(row.PLO3),
+                  count,
+                  "PLO3"
+                )}
                                                 ${yesNo(row.PLO3)}
                                     </td>
                                     <td scope="row">
                                         ${count_semester(
-                                            yesNo(row.PLO4),
-                                            count,
-                                            "PLO4"
-                                        )}
+                  yesNo(row.PLO4),
+                  count,
+                  "PLO4"
+                )}
                                                 ${yesNo(row.PLO4)}
                                     </td>
                                     <td scope="row">
                                         ${count_semester(
-                                            yesNo(row.PLO5),
-                                            count,
-                                            "PLO5"
-                                        )}
+                  yesNo(row.PLO5),
+                  count,
+                  "PLO5"
+                )}
                                                 ${yesNo(row.PLO5)}
                                     </td>
                                     <td scope="row">
                                         ${count_semester(
-                                            yesNo(row.PLO6),
-                                            count,
-                                            "PLO6"
-                                        )}
+                  yesNo(row.PLO6),
+                  count,
+                  "PLO6"
+                )}
                                                 ${yesNo(row.PLO6)}
                                     </td>
                                     <td scope="row">
                                         ${count_semester(
-                                            yesNo(row.PLO7),
-                                            count,
-                                            "PLO7"
-                                        )}
+                  yesNo(row.PLO7),
+                  count,
+                  "PLO7"
+                )}
                                                 ${yesNo(row.PLO7)}
                                     </td>
                                     <td scope="row">
                                         ${count_semester(
-                                            yesNo(row.PLO8),
-                                            count,
-                                            "PLO8"
-                                        )}
+                  yesNo(row.PLO8),
+                  count,
+                  "PLO8"
+                )}
                                                 ${yesNo(row.PLO8)}
                                     </td>
                                     <td scope="row">
                                         ${count_semester(
-                                            yesNo(row.PLO9),
-                                            count,
-                                            "PLO9"
-                                        )}
+                  yesNo(row.PLO9),
+                  count,
+                  "PLO9"
+                )}
                                                 ${yesNo(row.PLO9)}
                                     </td>
                                     <td scope="row">
                                         ${count_semester(
-                                            yesNo(row.PLO10),
-                                            count,
-                                            "PLO10"
-                                        )}
+                  yesNo(row.PLO10),
+                  count,
+                  "PLO10"
+                )}
                                                 ${yesNo(row.PLO10)}
                                     </td>
                                     <td scope="row">
                                         ${count_semester(
-                                            yesNo(row.PLO11),
-                                            count,
-                                            "PLO11"
-                                        )}
+                  yesNo(row.PLO11),
+                  count,
+                  "PLO11"
+                )}
                                                 ${yesNo(row.PLO11)}
                                     </td>
                                     <td scope="row">
                                         ${count_semester(
-                                            yesNo(row.PLO12),
-                                            count,
-                                            "PLO12"
-                                        )}
+                  yesNo(row.PLO12),
+                  count,
+                  "PLO12"
+                )}
                                                 ${yesNo(row.PLO12)}
                                     </td>
                                     </tr>
                                     `
-                                    )
-                                    .join("")}
+              )
+              .join("")}
                                     <tr>
                                     <td scope="row" colspan="2" class="table-light rowhead">
                                         <b>Semester Attainment</b>
@@ -424,57 +427,57 @@ export function createTranscriptTemplate(data, logo, signature) {
                                     </td>
                                     <td scope="row">
                                         ${count.PLO1 ? count.PLO1["semester"] : "-"
-                                } 
+            } 
                                     </td>
                                     <td scope="row">
                                         ${count.PLO2 ? count.PLO2["semester"] : "-"
-                                } 
+            } 
                                     </td>
                                     <td scope="row">
                                         ${count.PLO3 ? count.PLO3["semester"] : "-"
-                                } 
+            } 
                                     </td>
                                     <td scope="row">
                                         ${count.PLO4 ? count.PLO4["semester"] : "-"
-                                } 
+            } 
                                     </td>
                                     <td scope="row">
                                         ${count.PLO5 ? count.PLO5["semester"] : "-"
-                                } 
+            } 
                                     </td>
                                     <td scope="row">
                                         ${count.PLO6 ? count.PLO6["semester"] : "-"
-                                } 
+            } 
                                     </td>
                                     <td scope="row">
                                         ${count.PLO7 ? count.PLO7["semester"] : "-"
-                                } 
+            } 
                                     </td>
                                     <td scope="row">
                                         ${count.PLO8 ? count.PLO8["semester"] : "-"
-                                } 
+            } 
                                     </td>
                                     <td scope="row">
                                         ${count.PLO9 ? count.PLO9["semester"] : "-"
-                                } 
+            } 
                                     </td>
                                     <td scope="row">
                                         ${count.PLO10
-                                    ? count.PLO10["semester"]
-                                    : "-"
-                                } 
+              ? count.PLO10["semester"]
+              : "-"
+            } 
                                     </td>
                                     <td scope="row">
                                         ${count.PLO11
-                                    ? count.PLO11["semester"]
-                                    : "-"
-                                } 
+              ? count.PLO11["semester"]
+              : "-"
+            } 
                                     </td>
                                     <td scope="row">
                                         ${count.PLO12
-                                    ? count.PLO12["semester"]
-                                    : "-"
-                                } 
+              ? count.PLO12["semester"]
+              : "-"
+            } 
                                     </td>
                                     </tr>
                                     <tr>
@@ -484,83 +487,83 @@ export function createTranscriptTemplate(data, logo, signature) {
                                     </td>
                                     <td scope="row">
                                         ${commulative.PLO1
-                                    ? commulative.PLO1["semester"]
-                                    : "-"
-                                }
+              ? commulative.PLO1["semester"]
+              : "-"
+            }
                                     </td>
                                     <td scope="row">
                                         ${commulative.PLO2
-                                    ? commulative.PLO2["semester"]
-                                    : "-"
-                                }
+              ? commulative.PLO2["semester"]
+              : "-"
+            }
                                     </td>
                                     <td scope="row">
                                         ${commulative.PLO3
-                                    ? commulative.PLO3["semester"]
-                                    : "-"
-                                }
+              ? commulative.PLO3["semester"]
+              : "-"
+            }
                                     </td>
                                     <td scope="row">
                                         ${commulative.PLO4
-                                    ? commulative.PLO4["semester"]
-                                    : "-"
-                                }
+              ? commulative.PLO4["semester"]
+              : "-"
+            }
                                     </td>
                                     <td scope="row">
                                         ${commulative.PLO5
-                                    ? commulative.PLO5["semester"]
-                                    : "-"
-                                }
+              ? commulative.PLO5["semester"]
+              : "-"
+            }
                                     </td>
                                     <td scope="row">
                                         ${commulative.PLO6
-                                    ? commulative.PLO6["semester"]
-                                    : "-"
-                                }
+              ? commulative.PLO6["semester"]
+              : "-"
+            }
                                     </td>
                                     <td scope="row">
                                         ${commulative.PLO7
-                                    ? commulative.PLO7["semester"]
-                                    : "-"
-                                }
+              ? commulative.PLO7["semester"]
+              : "-"
+            }
                                     </td>
                                     <td scope="row">
                                         ${commulative.PLO8
-                                    ? commulative.PLO8["semester"]
-                                    : "-"
-                                }
+              ? commulative.PLO8["semester"]
+              : "-"
+            }
                                     </td>
                                     <td scope="row">
                                         ${commulative.PLO9
-                                    ? commulative.PLO9["semester"]
-                                    : "-"
-                                }
+              ? commulative.PLO9["semester"]
+              : "-"
+            }
                                     </td>
                                     <td scope="row">
                                         ${commulative.PLO10
-                                    ? commulative.PLO10["semester"]
-                                    : "-"
-                                }
+              ? commulative.PLO10["semester"]
+              : "-"
+            }
                                     </td>
                                     <td scope="row">
                                         ${commulative.PLO11
-                                    ? commulative.PLO11["semester"]
-                                    : "-"
-                                }
+              ? commulative.PLO11["semester"]
+              : "-"
+            }
                                     </td>
                                     <td scope="row">
                                         ${commulative.PLO12
-                                    ? commulative.PLO12["semester"]
-                                    : "-"
-                                }
+              ? commulative.PLO12["semester"]
+              : "-"
+            }
                                     </td>
                                     </tr>
                                 </tbody>
                                 </table>
                             </div>
-                            <div>
+                            ${row_r == rowYear && year == yearLast ? (` <div>
                         <table class="table table-bordered tb-ovr">
-                          ${row_r == rowYear && year == yearLast ? (`
+                           
                             <col><col><col><col><col><col><col><col><col><col><col><col><col>
                             <thead>
                             <tr>
@@ -641,17 +644,17 @@ export function createTranscriptTemplate(data, logo, signature) {
                                 </td>
                               </tr>
                             </tbody>
-                          `) : ""}
+                          
                         </table>
-                      </div>
+                      </div> `) : ""}
                             </div>
                         `
-                        )
-                        .join("")}
+          )
+          .join("")}
                     </div>
                     `;
-            })
-            .join("")}
+      })
+      .join("")}
               </div>
               <div class="row justify-content-end mt-5">
                 <div class="col-2">

@@ -5,7 +5,7 @@ import * as os from 'os';
 import * as url from 'url';
 import puppeteer from 'puppeteer';
 import { buildPaths as bP } from '../../commons/buildPaths';
-import { createTranscriptTemplate } from './template';
+import { createTranscriptTemplate } from './template.rf';
 import * as AdmZip from 'adm-zip';
 import {LOGO, SIGNATURE} from '../../commons/base64assets';
 
