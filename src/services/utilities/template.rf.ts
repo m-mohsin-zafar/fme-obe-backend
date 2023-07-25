@@ -324,7 +324,7 @@ export function createTranscriptTemplate(data, logo, signature) {
                                       ><p>
                                           ${(() => {
                                             if (Number(year) == 3)
-                                              return `F ${row_r}`;
+                                              return `FA ${row_r}`;
                                             else if (Number(year) == 2)
                                               return `SU ${row_r}`;
                                             else return `SP ${row_r}`;
