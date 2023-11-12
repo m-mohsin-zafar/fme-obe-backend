@@ -534,84 +534,108 @@ export function createTranscriptTemplate(data, logo, signature) {
                                       <td>
                                           ${
                                             commulative?.['PLO1']
-                                              ? commulative?.['PLO1']['semester']
+                                              ? commulative?.['PLO1'][
+                                                  'semester'
+                                                ]
                                               : '-'
                                           }
                                       </td>
                                       <td>
                                           ${
                                             commulative?.['PLO2']
-                                              ? commulative?.['PLO2']['semester']
+                                              ? commulative?.['PLO2'][
+                                                  'semester'
+                                                ]
                                               : '-'
                                           }
                                       </td>
                                       <td>
                                           ${
                                             commulative?.['PLO3']
-                                              ? commulative?.['PLO3']['semester']
+                                              ? commulative?.['PLO3'][
+                                                  'semester'
+                                                ]
                                               : '-'
                                           }
                                       </td>
                                       <td>
                                           ${
                                             commulative?.['PLO4']
-                                              ? commulative?.['PLO4']['semester']
+                                              ? commulative?.['PLO4'][
+                                                  'semester'
+                                                ]
                                               : '-'
                                           }
                                       </td>
                                       <td>
                                           ${
                                             commulative?.['PLO5']
-                                              ? commulative?.['PLO5']['semester']
+                                              ? commulative?.['PLO5'][
+                                                  'semester'
+                                                ]
                                               : '-'
                                           }
                                       </td>
                                       <td>
                                           ${
                                             commulative?.['PLO6']
-                                              ? commulative?.['PLO6']['semester']
+                                              ? commulative?.['PLO6'][
+                                                  'semester'
+                                                ]
                                               : '-'
                                           }
                                       </td>
                                       <td>
                                           ${
                                             commulative?.['PLO7']
-                                              ? commulative?.['PLO7']['semester']
+                                              ? commulative?.['PLO7'][
+                                                  'semester'
+                                                ]
                                               : '-'
                                           }
                                       </td>
                                       <td>
                                           ${
                                             commulative?.['PLO8']
-                                              ? commulative?.['PLO8']['semester']
+                                              ? commulative?.['PLO8'][
+                                                  'semester'
+                                                ]
                                               : '-'
                                           }
                                       </td>
                                       <td>
                                           ${
                                             commulative?.['PLO9']
-                                              ? commulative?.['PLO9']['semester']
+                                              ? commulative?.['PLO9'][
+                                                  'semester'
+                                                ]
                                               : '-'
                                           }
                                       </td>
                                       <td>
                                           ${
                                             commulative?.['PLO10']
-                                              ? commulative?.['PLO10']['semester']
+                                              ? commulative?.['PLO10'][
+                                                  'semester'
+                                                ]
                                               : '-'
                                           }
                                       </td>
                                       <td>
                                           ${
                                             commulative?.['PLO11']
-                                              ? commulative?.['PLO11']['semester']
+                                              ? commulative?.['PLO11'][
+                                                  'semester'
+                                                ]
                                               : '-'
                                           }
                                       </td>
                                       <td>
                                           ${
                                             commulative?.['PLO12']
-                                              ? commulative?.['PLO12']['semester']
+                                              ? commulative?.['PLO12'][
+                                                  'semester'
+                                                ]
                                               : '-'
                                           }
                                       </td>
@@ -750,7 +774,9 @@ export function createTranscriptTemplate(data, logo, signature) {
                                       ${
                                         commulative?.['PLO10']
                                           ? passFail(
-                                              commulative?.['PLO10']['semester'],
+                                              commulative?.['PLO10'][
+                                                'semester'
+                                              ],
                                             )
                                           : '-'
                                       }
@@ -759,7 +785,9 @@ export function createTranscriptTemplate(data, logo, signature) {
                                       ${
                                         commulative?.['PLO11']
                                           ? passFail(
-                                              commulative?.['PLO11']['semester'],
+                                              commulative?.['PLO11'][
+                                                'semester'
+                                              ],
                                             )
                                           : '-'
                                       }
@@ -768,7 +796,9 @@ export function createTranscriptTemplate(data, logo, signature) {
                                       ${
                                         commulative?.['PLO12']
                                           ? passFail(
-                                              commulative?.['PLO12']['semester'],
+                                              commulative?.['PLO12'][
+                                                'semester'
+                                              ],
                                             )
                                           : '-'
                                       }
@@ -777,14 +807,14 @@ export function createTranscriptTemplate(data, logo, signature) {
                                 </tbody>
                               </table>
                             </div> `
-                                : ''
-                            }
+                        : ''
+                    }
                         `,
                           )
                           .join('')}
                     `;
-                  })
-                  .join('')}
+                })
+                .join('')}
               <div class="row justify-content-end mt-5">
                 <div class="col-2">
                     <figure class="figure">
