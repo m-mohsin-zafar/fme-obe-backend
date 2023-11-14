@@ -11,6 +11,7 @@ import { CourseService } from './services/course/course.service';
 import { PloController } from './plo/plo.controller';
 import { SchemeOfStudiesController } from './scheme-of-studies/scheme-of-studies.controller';
 import { SchemeOfStudiesService } from './services/scheme-of-studies/scheme-of-studies.service';
+import { PloService } from './services/plo/plo.service';
 
 @Module({
   imports: [],
@@ -23,6 +24,7 @@ import { SchemeOfStudiesService } from './services/scheme-of-studies/scheme-of-s
     UtilitiesService,
     CourseService,
     SchemeOfStudiesService,
+    PloService,
   ],
 })
 export class AppModule {}

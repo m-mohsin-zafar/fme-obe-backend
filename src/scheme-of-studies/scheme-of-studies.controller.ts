@@ -54,7 +54,6 @@ export class SchemeOfStudiesController {
   @Post('add-many')
   async addSchemeOfStudies(@Body() schemeOfStudies: schemeofstudy[]) {
     try {
-        console.log(schemeOfStudies);
       const response = await this.schemeOfStudiesService.addSchemeOfStudies(
         schemeOfStudies,
       );
