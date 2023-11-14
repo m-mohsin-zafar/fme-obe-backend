@@ -1,8 +1,4 @@
-import {
-  BadRequestException,
-  Injectable,
-  InternalServerErrorException,
-} from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import * as ExcelJS from 'exceljs';
 import { PLODataDto } from 'src/dtos/ploData.dto';
@@ -41,23 +37,21 @@ export class PloService {
           PLO9: this.replacePLOAttainmentWithYesNoEmpty(row.getCell(13).value),
           PLO10: this.replacePLOAttainmentWithYesNoEmpty(row.getCell(14).value),
           PLO11: this.replacePLOAttainmentWithYesNoEmpty(row.getCell(15).value),
-          PLO12: this.replacePLOAttainmentWithYesNoEmpty(row.getCell(16).value),
+          PLO12: this.replacePLOAttainmentWithYesNoEmpty(row.getCell(16).value)
         });
       }
 
       ploData = this.filterEmptyRows(ploData);
 
       if (ploData.length === 0) {
-        return new BadRequestException(
-          'No PLO Data Found in the uploaded file',
-        );
+        return new BadRequestException('No PLO Data Found in the uploaded file');
       }
 
       return ploData;
       return 1;
     } catch (error) {
       return new InternalServerErrorException(
-        `Something went wrong while extracting data from PLO excel file:: ${error}`,
+        `Something went wrong while extracting data from PLO excel file:: ${error}`
       );
     }
   }
@@ -65,7 +59,7 @@ export class PloService {
     try {
       const ploDataInsertion = await this.prismaService.courseplo.createMany({
         data: ploData,
-        skipDuplicates: true,
+        skipDuplicates: true
       });
       return ploDataInsertion;
     } catch (error) {
@@ -74,10 +68,8 @@ export class PloService {
   }
 
   private filterEmptyRows(data) {
-    return data.filter((row) =>
-      Object.values(row).every(
-        (value) => value !== null && value !== undefined,
-      ),
+    return data.filter(row =>
+      Object.values(row).every(value => value !== null && value !== undefined)
     );
   }
 

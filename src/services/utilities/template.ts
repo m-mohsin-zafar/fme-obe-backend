@@ -35,9 +35,7 @@ export function createTranscriptTemplate(data, logo, signature) {
 
   function semesterGP(count: any) {
     for (let key in count) {
-      let num = parseFloat(
-        count[key]['Y'] / (count[key]['Y'] + count[key]['N']),
-      );
+      let num = parseFloat(count[key]['Y'] / (count[key]['Y'] + count[key]['N']));
       count[key]['semester'] = num.toFixed(2);
     }
     return '';
@@ -45,9 +43,7 @@ export function createTranscriptTemplate(data, logo, signature) {
 
   function commulativePLO() {
     for (let key in commulative) {
-      let num = parseFloat(
-        commulative[key]['Y'] / (commulative[key]['Y'] + commulative[key]['N']),
-      );
+      let num = parseFloat(commulative[key]['Y'] / (commulative[key]['Y'] + commulative[key]['N']));
       commulative[key]['semester'] = num.toFixed(2);
     }
     return '';
@@ -69,8 +65,7 @@ export function createTranscriptTemplate(data, logo, signature) {
     }, {});
 
   const rowYear = Object.keys(details)[Object.keys(details).length - 1];
-  const rowLast =
-    details[Object.keys(details)[Object.keys(details).length - 1]];
+  const rowLast = details[Object.keys(details)[Object.keys(details).length - 1]];
   const yearLast = Object.keys(rowLast)[Object.keys(rowLast).length - 1];
 
   return `
@@ -258,7 +253,7 @@ export function createTranscriptTemplate(data, logo, signature) {
                                 </thead>
                                 </table>
                 ${Object.keys(details)
-                  .map((row_r) => {
+                  .map(row_r => {
                     const ordered = Object.keys(details[row_r])
                       .sort()
                       .reduce((obj, key) => {
@@ -271,7 +266,7 @@ export function createTranscriptTemplate(data, logo, signature) {
                     
                         ${Object.keys(ordered)
                           .map(
-                            (year) => `
+                            year => `
                             <div>
                             <div class="w-100 mt-0 mb-0">
                                 <table class="tb-main table table-bordered lh-1">
@@ -307,117 +302,67 @@ export function createTranscriptTemplate(data, logo, signature) {
                                         rowspan="0"
                                     ><p>
                                         ${(() => {
-                                          if (Number(year) == 3)
-                                            return `F ${row_r}`;
-                                          else if (Number(year) == 2)
-                                            return `SU ${row_r}`;
+                                          if (Number(year) == 3) return `F ${row_r}`;
+                                          else if (Number(year) == 2) return `SU ${row_r}`;
                                           else return `SP ${row_r}`;
                                         })()}</p>
                                     </td>
                                     ${details[row_r][year]
                                       .map(
-                                        (row) => `
+                                        row => `
                                     
                                     <td scope="row">${row.CourseCode}</td>
                                     <td scope="row">${row.courseTitle}</td>
                                     <td scope="row">
-                                        ${count_semester(
-                                          yesNo(row.PLO1),
-                                          count,
-                                          'PLO1',
-                                        )}
+                                        ${count_semester(yesNo(row.PLO1), count, 'PLO1')}
                                                 ${yesNo(row.PLO1)}
                                     </td>
                                     <td scope="row">
-                                        ${count_semester(
-                                          yesNo(row.PLO2),
-                                          count,
-                                          'PLO2',
-                                        )}
+                                        ${count_semester(yesNo(row.PLO2), count, 'PLO2')}
                                                 ${yesNo(row.PLO2)}
                                     </td>
                                     <td scope="row">
-                                        ${count_semester(
-                                          yesNo(row.PLO3),
-                                          count,
-                                          'PLO3',
-                                        )}
+                                        ${count_semester(yesNo(row.PLO3), count, 'PLO3')}
                                                 ${yesNo(row.PLO3)}
                                     </td>
                                     <td scope="row">
-                                        ${count_semester(
-                                          yesNo(row.PLO4),
-                                          count,
-                                          'PLO4',
-                                        )}
+                                        ${count_semester(yesNo(row.PLO4), count, 'PLO4')}
                                                 ${yesNo(row.PLO4)}
                                     </td>
                                     <td scope="row">
-                                        ${count_semester(
-                                          yesNo(row.PLO5),
-                                          count,
-                                          'PLO5',
-                                        )}
+                                        ${count_semester(yesNo(row.PLO5), count, 'PLO5')}
                                                 ${yesNo(row.PLO5)}
                                     </td>
                                     <td scope="row">
-                                        ${count_semester(
-                                          yesNo(row.PLO6),
-                                          count,
-                                          'PLO6',
-                                        )}
+                                        ${count_semester(yesNo(row.PLO6), count, 'PLO6')}
                                                 ${yesNo(row.PLO6)}
                                     </td>
                                     <td scope="row">
-                                        ${count_semester(
-                                          yesNo(row.PLO7),
-                                          count,
-                                          'PLO7',
-                                        )}
+                                        ${count_semester(yesNo(row.PLO7), count, 'PLO7')}
                                                 ${yesNo(row.PLO7)}
                                     </td>
                                     <td scope="row">
-                                        ${count_semester(
-                                          yesNo(row.PLO8),
-                                          count,
-                                          'PLO8',
-                                        )}
+                                        ${count_semester(yesNo(row.PLO8), count, 'PLO8')}
                                                 ${yesNo(row.PLO8)}
                                     </td>
                                     <td scope="row">
-                                        ${count_semester(
-                                          yesNo(row.PLO9),
-                                          count,
-                                          'PLO9',
-                                        )}
+                                        ${count_semester(yesNo(row.PLO9), count, 'PLO9')}
                                                 ${yesNo(row.PLO9)}
                                     </td>
                                     <td scope="row">
-                                        ${count_semester(
-                                          yesNo(row.PLO10),
-                                          count,
-                                          'PLO10',
-                                        )}
+                                        ${count_semester(yesNo(row.PLO10), count, 'PLO10')}
                                                 ${yesNo(row.PLO10)}
                                     </td>
                                     <td scope="row">
-                                        ${count_semester(
-                                          yesNo(row.PLO11),
-                                          count,
-                                          'PLO11',
-                                        )}
+                                        ${count_semester(yesNo(row.PLO11), count, 'PLO11')}
                                                 ${yesNo(row.PLO11)}
                                     </td>
                                     <td scope="row">
-                                        ${count_semester(
-                                          yesNo(row.PLO12),
-                                          count,
-                                          'PLO12',
-                                        )}
+                                        ${count_semester(yesNo(row.PLO12), count, 'PLO12')}
                                                 ${yesNo(row.PLO12)}
                                     </td>
                                     </tr>
-                                    `,
+                                    `
                                       )
                                       .join('')}
                                     <tr>
@@ -426,88 +371,40 @@ export function createTranscriptTemplate(data, logo, signature) {
                                                 ${semesterGP(count)} 
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          count.PLO1
-                                            ? count.PLO1['semester']
-                                            : '-'
-                                        } 
+                                        ${count.PLO1 ? count.PLO1['semester'] : '-'} 
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          count.PLO2
-                                            ? count.PLO2['semester']
-                                            : '-'
-                                        } 
+                                        ${count.PLO2 ? count.PLO2['semester'] : '-'} 
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          count.PLO3
-                                            ? count.PLO3['semester']
-                                            : '-'
-                                        } 
+                                        ${count.PLO3 ? count.PLO3['semester'] : '-'} 
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          count.PLO4
-                                            ? count.PLO4['semester']
-                                            : '-'
-                                        } 
+                                        ${count.PLO4 ? count.PLO4['semester'] : '-'} 
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          count.PLO5
-                                            ? count.PLO5['semester']
-                                            : '-'
-                                        } 
+                                        ${count.PLO5 ? count.PLO5['semester'] : '-'} 
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          count.PLO6
-                                            ? count.PLO6['semester']
-                                            : '-'
-                                        } 
+                                        ${count.PLO6 ? count.PLO6['semester'] : '-'} 
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          count.PLO7
-                                            ? count.PLO7['semester']
-                                            : '-'
-                                        } 
+                                        ${count.PLO7 ? count.PLO7['semester'] : '-'} 
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          count.PLO8
-                                            ? count.PLO8['semester']
-                                            : '-'
-                                        } 
+                                        ${count.PLO8 ? count.PLO8['semester'] : '-'} 
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          count.PLO9
-                                            ? count.PLO9['semester']
-                                            : '-'
-                                        } 
+                                        ${count.PLO9 ? count.PLO9['semester'] : '-'} 
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          count.PLO10
-                                            ? count.PLO10['semester']
-                                            : '-'
-                                        } 
+                                        ${count.PLO10 ? count.PLO10['semester'] : '-'} 
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          count.PLO11
-                                            ? count.PLO11['semester']
-                                            : '-'
-                                        } 
+                                        ${count.PLO11 ? count.PLO11['semester'] : '-'} 
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          count.PLO12
-                                            ? count.PLO12['semester']
-                                            : '-'
-                                        } 
+                                        ${count.PLO12 ? count.PLO12['semester'] : '-'} 
                                     </td>
                                     </tr>
                                     <tr>
@@ -516,88 +413,40 @@ export function createTranscriptTemplate(data, logo, signature) {
                                                 ${commulativePLO()}
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          commulative.PLO1
-                                            ? commulative.PLO1['semester']
-                                            : '-'
-                                        }
+                                        ${commulative.PLO1 ? commulative.PLO1['semester'] : '-'}
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          commulative.PLO2
-                                            ? commulative.PLO2['semester']
-                                            : '-'
-                                        }
+                                        ${commulative.PLO2 ? commulative.PLO2['semester'] : '-'}
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          commulative.PLO3
-                                            ? commulative.PLO3['semester']
-                                            : '-'
-                                        }
+                                        ${commulative.PLO3 ? commulative.PLO3['semester'] : '-'}
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          commulative.PLO4
-                                            ? commulative.PLO4['semester']
-                                            : '-'
-                                        }
+                                        ${commulative.PLO4 ? commulative.PLO4['semester'] : '-'}
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          commulative.PLO5
-                                            ? commulative.PLO5['semester']
-                                            : '-'
-                                        }
+                                        ${commulative.PLO5 ? commulative.PLO5['semester'] : '-'}
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          commulative.PLO6
-                                            ? commulative.PLO6['semester']
-                                            : '-'
-                                        }
+                                        ${commulative.PLO6 ? commulative.PLO6['semester'] : '-'}
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          commulative.PLO7
-                                            ? commulative.PLO7['semester']
-                                            : '-'
-                                        }
+                                        ${commulative.PLO7 ? commulative.PLO7['semester'] : '-'}
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          commulative.PLO8
-                                            ? commulative.PLO8['semester']
-                                            : '-'
-                                        }
+                                        ${commulative.PLO8 ? commulative.PLO8['semester'] : '-'}
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          commulative.PLO9
-                                            ? commulative.PLO9['semester']
-                                            : '-'
-                                        }
+                                        ${commulative.PLO9 ? commulative.PLO9['semester'] : '-'}
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          commulative.PLO10
-                                            ? commulative.PLO10['semester']
-                                            : '-'
-                                        }
+                                        ${commulative.PLO10 ? commulative.PLO10['semester'] : '-'}
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          commulative.PLO11
-                                            ? commulative.PLO11['semester']
-                                            : '-'
-                                        }
+                                        ${commulative.PLO11 ? commulative.PLO11['semester'] : '-'}
                                     </td>
                                     <td scope="row">
-                                        ${
-                                          commulative.PLO12
-                                            ? commulative.PLO12['semester']
-                                            : '-'
-                                        }
+                                        ${commulative.PLO12 ? commulative.PLO12['semester'] : '-'}
                                     </td>
                                     </tr>
                                 </tbody>
@@ -651,67 +500,31 @@ export function createTranscriptTemplate(data, logo, signature) {
                                   Overall Attainment
                                 </td>
                                 <td>
-                                  ${
-                                    commulative.PLO1
-                                      ? passFail(commulative.PLO1['semester'])
-                                      : '-'
-                                  }
+                                  ${commulative.PLO1 ? passFail(commulative.PLO1['semester']) : '-'}
                                 </td>
                                 <td>
-                                  ${
-                                    commulative.PLO2
-                                      ? passFail(commulative.PLO2['semester'])
-                                      : '-'
-                                  }
+                                  ${commulative.PLO2 ? passFail(commulative.PLO2['semester']) : '-'}
                                 </td>
                                 <td>
-                                  ${
-                                    commulative.PLO3
-                                      ? passFail(commulative.PLO3['semester'])
-                                      : '-'
-                                  }
+                                  ${commulative.PLO3 ? passFail(commulative.PLO3['semester']) : '-'}
                                 </td>
                                 <td>
-                                  ${
-                                    commulative.PLO4
-                                      ? passFail(commulative.PLO4['semester'])
-                                      : '-'
-                                  }
+                                  ${commulative.PLO4 ? passFail(commulative.PLO4['semester']) : '-'}
                                 </td>
                                 <td>
-                                  ${
-                                    commulative.PLO5
-                                      ? passFail(commulative.PLO5['semester'])
-                                      : '-'
-                                  }
+                                  ${commulative.PLO5 ? passFail(commulative.PLO5['semester']) : '-'}
                                 </td>
                                 <td>
-                                  ${
-                                    commulative.PLO6
-                                      ? passFail(commulative.PLO6['semester'])
-                                      : '-'
-                                  }
+                                  ${commulative.PLO6 ? passFail(commulative.PLO6['semester']) : '-'}
                                 </td>
                                 <td>
-                                  ${
-                                    commulative.PLO7
-                                      ? passFail(commulative.PLO7['semester'])
-                                      : '-'
-                                  }
+                                  ${commulative.PLO7 ? passFail(commulative.PLO7['semester']) : '-'}
                                 </td>
                                 <td>
-                                  ${
-                                    commulative.PLO8
-                                      ? passFail(commulative.PLO8['semester'])
-                                      : '-'
-                                  }
+                                  ${commulative.PLO8 ? passFail(commulative.PLO8['semester']) : '-'}
                                 </td>
                                 <td>
-                                  ${
-                                    commulative.PLO9
-                                      ? passFail(commulative.PLO9['semester'])
-                                      : '-'
-                                  }
+                                  ${commulative.PLO9 ? passFail(commulative.PLO9['semester']) : '-'}
                                 </td>
                                 <td>
                                   ${
@@ -742,7 +555,7 @@ export function createTranscriptTemplate(data, logo, signature) {
                                 : ''
                             }
                             </div>
-                        `,
+                        `
                           )
                           .join('')}
                     </div>

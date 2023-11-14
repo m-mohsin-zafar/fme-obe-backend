@@ -6,7 +6,7 @@ import {
   NotFoundException,
   Post,
   UploadedFile,
-  UseInterceptors,
+  UseInterceptors
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { courseplo } from '@prisma/client';
@@ -24,10 +24,7 @@ export class PloController {
       if (!file) {
         return new NotFoundException('No File Uploaded');
       }
-      if (
-        file.mimetype !==
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-      ) {
+      if (file.mimetype !== 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
         return new BadRequestException('Invalid File Type');
       }
       const response = await this.ploService.extractPLODataFromExcelFile(file);
@@ -37,7 +34,7 @@ export class PloController {
       ) {
         return {
           count: response?.['length'],
-          data: response,
+          data: response
         };
       }
       return response;

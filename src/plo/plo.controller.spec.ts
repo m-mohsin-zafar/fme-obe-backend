@@ -6,7 +6,7 @@ describe('PloController', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [PloController],
+      controllers: [PloController]
     }).compile();
 
     controller = module.get<PloController>(PloController);

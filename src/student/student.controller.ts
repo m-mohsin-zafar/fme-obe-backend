@@ -10,7 +10,7 @@ import {
   Param,
   Post,
   UploadedFile,
-  UseInterceptors,
+  UseInterceptors
 } from '@nestjs/common';
 import { student } from '@prisma/client';
 
@@ -37,22 +37,17 @@ export class StudentController {
       if (!file) {
         return new NotFoundException('No File Uploaded');
       }
-      if (
-        file.mimetype !==
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-      ) {
+      if (file.mimetype !== 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
         return new BadRequestException('Invalid File Type');
       }
-      const response = await this.student.extractStudentsDataFromExcelFile(
-        file,
-      );
+      const response = await this.student.extractStudentsDataFromExcelFile(file);
       if (
         response instanceof BadRequestException ||
         response instanceof InternalServerErrorException
       ) {
         return {
           count: response?.['length'],
-          data: response,
+          data: response
         };
       }
       return response;

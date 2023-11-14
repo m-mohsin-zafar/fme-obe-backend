@@ -8,15 +8,15 @@ export class CourseService {
   async getSchemeCoursesByBatch(batch: number) {
     return this.prisma.schemeofstudy.findMany({
       where: {
-        Batch: batch,
+        Batch: batch
       },
       select: {
         Semester: true,
-        CourseCode: true,
+        CourseCode: true
       },
       orderBy: {
-        Semester: 'asc',
-      },
+        Semester: 'asc'
+      }
     });
   }
 
@@ -37,29 +37,29 @@ export class CourseService {
         PLO9: true,
         PLO10: true,
         PLO11: true,
-        PLO12: true,
+        PLO12: true
       },
       where: {
         AND: [
           {
-            RegNo: regNo,
+            RegNo: regNo
           },
           {
-            CourseCode: { in: codes },
-          },
-        ],
-      },
+            CourseCode: { in: codes }
+          }
+        ]
+      }
     });
   }
 
   async getCourseTitleByCourseCode(code: string) {
     return this.prisma.schemeofstudy.findFirst({
       where: {
-        CourseCode: code,
+        CourseCode: code
       },
       select: {
-        CourseTitle: true,
-      },
+        CourseTitle: true
+      }
     });
   }
 }

@@ -15,7 +15,13 @@ import { PloService } from './services/plo/plo.service';
 
 @Module({
   imports: [],
-  controllers: [AppController, StudentController, TranscriptController, PloController, SchemeOfStudiesController],
+  controllers: [
+    AppController,
+    StudentController,
+    TranscriptController,
+    PloController,
+    SchemeOfStudiesController
+  ],
   providers: [
     AppService,
     PrismaService,
@@ -24,7 +30,7 @@ import { PloService } from './services/plo/plo.service';
     UtilitiesService,
     CourseService,
     SchemeOfStudiesService,
-    PloService,
-  ],
+    PloService
+  ]
 })
 export class AppModule {}

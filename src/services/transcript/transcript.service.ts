@@ -10,14 +10,14 @@ export class TranscriptService {
   semesterLookup = {
     Spring: 1,
     Summer: 2,
-    Fall: 3,
+    Fall: 3
   };
 
   constructor(
     private readonly prisma: PrismaService,
     private readonly student: StudentService,
     private readonly course: CourseService,
-    private readonly utilities: UtilitiesService,
+    private readonly utilities: UtilitiesService
   ) {}
 
   async getTranscriptByRegNo(regNo: number) {
@@ -25,23 +25,23 @@ export class TranscriptService {
     const courses = await this.course.getSchemeCoursesByBatch(student.Batch);
 
     let codes = [];
-    courses.forEach((course) => {
+    courses.forEach(course => {
       codes.push(course.CourseCode);
     });
 
-    let ploAttainment: PLOAttainment[] =
-      await this.course.getPLOAttainmentByRegNoAndCourses(regNo, codes);
+    let ploAttainment: PLOAttainment[] = await this.course.getPLOAttainmentByRegNoAndCourses(
+      regNo,
+      codes
+    );
 
     if (ploAttainment) {
       for (const individualCourse of ploAttainment) {
-        const course = await this.course.getCourseTitleByCourseCode(
-          individualCourse.CourseCode,
-        );
+        const course = await this.course.getCourseTitleByCourseCode(individualCourse.CourseCode);
         individualCourse['courseTitle'] = course.CourseTitle;
       }
     }
 
-    ploAttainment.forEach((obj) => {
+    ploAttainment.forEach(obj => {
       let [semType, year] = obj.Semester.split(' ');
       obj['semType'] = this.semesterLookup[semType];
       obj['year'] = year;
@@ -52,7 +52,7 @@ export class TranscriptService {
       if (!Object.keys(tmpResult).includes(row.year)) {
         tmpResult[row.year] = {};
       }
-      if (!Object.keys(tmpResult[row.year]).some((el) => el == row.semType)) {
+      if (!Object.keys(tmpResult[row.year]).some(el => el == row.semType)) {
         tmpResult[row.year][row.semType] = [];
       }
       tmpResult[row.year][row.semType].push(row);
@@ -63,7 +63,7 @@ export class TranscriptService {
       name: student.Name,
       faculty: student.Faculty,
       batch: student.Batch,
-      result: tmpResult,
+      result: tmpResult
     };
     return transcript;
   }

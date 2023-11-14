@@ -24,7 +24,7 @@ export class UtilitiesService {
     const htmlDir = path.join(__dirname, '..', '..', 'html');
     for (const file of fs.readdirSync(htmlDir)) {
       if (file !== 'readme.txt') {
-        fs.unlink(path.join(htmlDir, file), (err) => {
+        fs.unlink(path.join(htmlDir, file), err => {
           if (err) {
             console.log(err);
           }
@@ -35,7 +35,7 @@ export class UtilitiesService {
     const pdfDir = path.join(__dirname, '..', '..', 'pdfs');
     for (const file of fs.readdirSync(pdfDir)) {
       if (file !== 'readme.txt') {
-        fs.unlink(path.join(pdfDir, file), (err) => {
+        fs.unlink(path.join(pdfDir, file), err => {
           if (err) {
             console.log(err);
           }
@@ -65,7 +65,7 @@ export class UtilitiesService {
     const browser = await puppeteer.launch({
       // executablePath: executablePath,
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
+      executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe'
     });
     /* 1- Ccreate a newPage() object. It is created in default browser context. */
     const page = await browser.newPage();
@@ -80,9 +80,9 @@ export class UtilitiesService {
         top: '20px',
         right: '20px',
         bottom: '20px',
-        left: '20px',
+        left: '20px'
       },
-      printBackground: true,
+      printBackground: true
     });
     /* 4- Cleanup: close browser. */
     await browser.close();
