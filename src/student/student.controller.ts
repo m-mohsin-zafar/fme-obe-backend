@@ -12,7 +12,6 @@ import {
   UploadedFile,
   UseInterceptors
 } from '@nestjs/common';
-import { student } from '@prisma/client';
 
 @Controller('/api/student')
 export class StudentController {
@@ -64,6 +63,36 @@ export class StudentController {
     } catch (error: any) {
       return new NotFoundException('No Batches Found');
     }
+  }
+
+  @Get('batches/count')
+  async getNumberOfBatches() {
+    const response = await this.student.getNumberOfBatches();
+    if (response instanceof InternalServerErrorException) {
+      return {
+        error: true,
+        message: response.message
+      };
+    }
+    return {
+      error: false,
+      count: response
+    };
+  }
+
+  @Get('count')
+  async getNumberOfStudents() {
+    const response = await this.student.getCountOfStudents();
+    if (response instanceof InternalServerErrorException) {
+      return {
+        error: true,
+        message: response.message
+      };
+    }
+    return {
+      error: false,
+      count: response
+    };
   }
 
   @Get('all')

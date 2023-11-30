@@ -100,6 +100,31 @@ export class StudentService {
     }
   }
 
+  async getNumberOfBatches() {
+    try {
+      const batches = await this.prismaService.student.findMany({
+        select: {
+          Batch: true
+        },
+        distinct: ['Batch']
+      });
+      return batches ? batches.length : 0;
+    } catch (e) {
+      return new InternalServerErrorException(`Something went wrong. ${e}`);
+    }
+  }
+
+  async getCountOfStudents() {
+    try {
+      const students = await this.prismaService.student.aggregate({
+        _count: true
+      });
+      return students ? students._count : 0;
+    } catch (e) {
+      return new InternalServerErrorException(`Something went wrong. ${e}`);
+    }
+  }
+
   private filterEmptyRows(data) {
     return data.filter(row =>
       Object.values(row).every(value => value !== '' && value !== null && value !== undefined)
